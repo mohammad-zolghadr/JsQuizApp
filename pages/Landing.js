@@ -1,5 +1,10 @@
 const Landing = () => {
-  return `<h2>Landing Page</h2>`;
+  return `
+  <div class="landingContainer">
+    <button>ساده</button>
+    <button>متوسط</button>
+    <button>سخت</button>
+  </div>`;
 };
 
 export default Landing;
