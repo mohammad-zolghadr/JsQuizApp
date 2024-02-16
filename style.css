@@ -1,13 +1,19 @@
+@font-face {
+  font-family: nf;
+  src: url('/assets/fonts/YekanBakh-Bold.ttf');
+}
 * {
   margin: 0;
   padding: 0;
   text-decoration: none;
   box-sizing: border-box;
   border: none;
+  font-family: nf;
+  direction: rtl;
 
   /* Color */
   --primaryColor: #a22;
-  --secondaryColor: #d7a306;
+  --secondaryColor: #f4b909;
   --bgColor: #eee;
   --bgColorDarker: #e6e6e6;
 }
@@ -32,9 +38,9 @@ body {
   gap: 20px;
 
   button {
-    background-color: var(--bgColorDarker);
-    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.1);
-    color: var(--secondaryColor);
+    background-color: var(--secondaryColor);
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.15);
+    color: #fff;
     font-size: 1.5rem;
     width: 200px;
     border-radius: 10px;
