@@ -11,10 +11,11 @@ const routes = [
   { path: '/notfound', view: NotFound },
 ];
 
-const router = () => {
+const router = (mode = 'easy') => {
   const pRoutes = routes.map((item) => {
     return {
       route: item,
+      mode,
       isMatch: location.pathname === item.path,
     };
   });
@@ -23,9 +24,9 @@ const router = () => {
   document.querySelector('.main').innerHTML = match.route.view();
 };
 
-const navigateTo = (url) => {
+const navigateTo = (url, mode = 'easy') => {
   history.pushState(null, null, url);
-  router();
+  router(mode);
 };
 
 window.addEventListener('popstate', router);
@@ -39,3 +40,5 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   router();
 });
+
+export { navigateTo };

@@ -1,6 +1,8 @@
+import { navigateTo } from '../js/app.js';
+
 const Landing = () => {
   const selectDifficulty = (e) => {
-    console.log(e.target.name);
+    e.target.hasAttribute('name') && navigateTo('/game', e.target.name);
   };
 
   return `
