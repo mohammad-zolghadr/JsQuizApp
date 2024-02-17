@@ -21,7 +21,7 @@ const router = (mode = 'easy') => {
   });
   let match = pRoutes.find((route) => route.isMatch);
   if (!match) match = pRoutes[routes.length - 1];
-  document.querySelector('.main').innerHTML = match.route.view();
+  document.querySelector('.main').innerHTML = match.route.view(match.mode);
 };
 
 const navigateTo = (url, mode = 'easy') => {
