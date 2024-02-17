@@ -1,0 +1,36 @@
+.gameContainer {
+  width: 90vw;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.gameHeaderContainer {
+  width: 100%;
+  padding: 10px 20px;
+  background-color: var(--bgColorDarker);
+  border-radius: 15px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.timerWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: #888;
+
+  span {
+    margin-top: 7px;
+  }
+
+  svg {
+    width: 25px;
+  }
+}
