@@ -96,6 +96,7 @@
 }
 
 .gameEachAnswerContainer {
+  width: 100%;
   display: flex;
   align-items: center;
   gap: 15px;
@@ -114,5 +115,10 @@
     height: 10px;
     background-color: #ccc;
     border-radius: 50%;
+  }
+
+  p,
+  span {
+    pointer-events: none;
   }
 }

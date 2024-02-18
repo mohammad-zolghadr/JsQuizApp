@@ -59,6 +59,15 @@ const Game = (mode) => {
   };
   const selectedQuestion = getRandomQuestion(info);
 
+  const handleAnswerClick = (e) => {
+    const correctAnswer = selectedQuestion.answers.findIndex(
+      (answer) => answer.correctness === true
+    );
+    console.log(correctAnswer, +e.target.name);
+    const isCorrect = +e.target.name === correctAnswer;
+    console.log(isCorrect);
+  };
+
   return `
   <div class="gameContainer">
     <header class="gameHeaderContainer">
@@ -88,18 +97,24 @@ const Game = (mode) => {
       </div>
 
       <div class="gameQAContainer">
-        <p class>${selectedQuestion.question}</p>
+        <p>${selectedQuestion.question}</p>
         <div class="gameAnswerContainer">
-          ${selectedQuestion.answers
-            .map(
-              (answer) => `
-            <div class="gameEachAnswerContainer">
+        ${selectedQuestion.answers
+          .map(
+            (answer, index) => `
+            <button
+              class="gameEachAnswerContainer"
+              name="${index}"
+              onclick="${(onclick = (e) => {
+                handleAnswerClick(e, index);
+              })}"
+            >
               <span></span>
               <p>${answer.answer}</p>
-            </div>`
-            )
-            .join('')}
-        </div>
+            </button>`
+          )
+          .join('')}
+      </div>
       </div>
     </div>
   </div>`;
