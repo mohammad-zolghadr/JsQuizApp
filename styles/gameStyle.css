@@ -8,12 +8,16 @@
   gap: 20px;
 }
 
-.gameHeaderContainer {
-  width: 100%;
-  padding: 10px 20px;
+.gameHeaderContainer,
+.gameBodyContainer {
   background-color: var(--bgColorDarker);
   border-radius: 15px;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  padding: 10px 20px;
+}
+
+.gameHeaderContainer {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -33,4 +37,35 @@
   svg {
     width: 25px;
   }
+}
+
+.gameBodyContainer {
+  width: 100%;
+}
+
+.gameResultContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  svg {
+    width: 30px;
+  }
+}
+
+.gameResultCorrectContainer,
+.gameResultWrongContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 1.3rem;
+}
+.gameResultCorrectContainer {
+  color: #2a2;
+}
+
+.gameResultWrongContainer {
+  color: #a22;
 }
