@@ -1,3 +1,51 @@
+const getRandomQuestion = (arr) => {
+  return arr[Math.floor(Math.random() * arr.length)];
+};
+const info = [
+  {
+    question: 'چرا ماهی ها خونسرد هستند؟',
+    answers: [
+      {
+        answer: 'چون دلشون میخواد',
+        correctness: false,
+      },
+      {
+        answer: 'چون گرمایی هستن',
+        correctness: false,
+      },
+      {
+        answer: 'برای حرکت سریعتر در آب',
+        correctness: true,
+      },
+      {
+        answer: 'چون از تابستونا بدشون میاد',
+        correctness: false,
+      },
+    ],
+  },
+  {
+    question: 'چرا رنگ خورشید در هنگام غروب، به رنگ قرمز دیده می شود؟',
+    answers: [
+      {
+        answer: 'چون رنگ قرمز رو دوست داره',
+        correctness: false,
+      },
+      {
+        answer: 'بخاطر زاویه خورشید با زمین و تجزیه نور در اتمسفر زمین',
+        correctness: true,
+      },
+      {
+        answer: 'برای اینکه زیرا',
+        correctness: false,
+      },
+      {
+        answer: 'چون خورشید قرمز رنگه',
+        correctness: false,
+      },
+    ],
+  },
+];
+
 const Game = (mode) => {
   const faMode = () => {
     switch (mode) {
@@ -9,6 +57,8 @@ const Game = (mode) => {
         return 'سخت';
     }
   };
+  const selectedQuestion = getRandomQuestion(info);
+
   return `
   <div class="gameContainer">
     <header class="gameHeaderContainer">
@@ -38,24 +88,17 @@ const Game = (mode) => {
       </div>
 
       <div class="gameQAContainer">
-        <p class>متن سوال</p>
+        <p class>${selectedQuestion.question}</p>
         <div class="gameAnswerContainer">
-          <div class="gameEachAnswerContainer">
-            <span></span>
-            <p>گزینه 1</p>
-          </div>
-          <div class="gameEachAnswerContainer">
-            <span></span>
-            <p>گزینه 2</p>
-          </div>
-          <div class="gameEachAnswerContainer">
-            <span></span>
-            <p>گزینه 3</p>
-          </div>
-          <div class="gameEachAnswerContainer">
-            <span></span>
-            <p>گزینه 4</p>
-          </div>
+          ${selectedQuestion.answers
+            .map(
+              (answer) => `
+            <div class="gameEachAnswerContainer">
+              <span></span>
+              <p>${answer.answer}</p>
+            </div>`
+            )
+            .join('')}
         </div>
       </div>
     </div>
