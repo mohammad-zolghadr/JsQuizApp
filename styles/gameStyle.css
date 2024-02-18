@@ -74,3 +74,45 @@
   background-color: #ff222222;
   color: #a22;
 }
+
+.gameQAContainer {
+  margin: 15px;
+
+  & > p {
+    background-color: var(--bgColor);
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+.gameAnswerContainer {
+  padding: 10px;
+  background-color: var(--bgColor);
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.gameEachAnswerContainer {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  transition: 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--bgColorDarker);
+  }
+
+  span {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    border-radius: 50%;
+  }
+}
