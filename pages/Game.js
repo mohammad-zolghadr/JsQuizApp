@@ -117,7 +117,17 @@ const Game = (mode) => {
     }, 1000);
   };
   setTimeout(() => {
-    startCountdown(60);
+    switch (mode) {
+      case 'easy':
+        startCountdown(120);
+        break;
+      case 'medium':
+        startCountdown(60);
+        break;
+      case 'hard':
+        startCountdown(30);
+        break;
+    }
   }, 10);
 
   const endGame = () => {
