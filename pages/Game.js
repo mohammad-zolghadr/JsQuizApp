@@ -139,7 +139,7 @@ const Game = (mode) => {
           updateUI();
           e.target.classList.remove('wrongAnswer', 'correctAnswer');
           activeOrDisableAllAnswers(true);
-        } else navigateTo('/scores', mode);
+        } else endGame();
       }, 750);
     }
   };
@@ -172,12 +172,42 @@ const Game = (mode) => {
     document.querySelector('#correctAnswer').innerText = newCount.correct;
   };
 
+  const startCountdown = (durationInSeconds) => {
+    let timer = durationInSeconds;
+    let minutes, seconds;
+    const displayElement = document.querySelector('#timerView');
+    console.log(displayElement);
+
+    const intervalId = setInterval(() => {
+      minutes = parseInt(timer / 60, 10);
+      seconds = parseInt(timer % 60, 10);
+
+      minutes = minutes < 10 ? '0' + minutes : minutes;
+      seconds = seconds < 10 ? '0' + seconds : seconds;
+
+      displayElement.textContent = minutes + ':' + seconds;
+      // console.log(minutes + ':' + seconds);
+
+      if (--timer < 0) {
+        clearInterval(intervalId);
+        endGame();
+      }
+    }, 1000);
+  };
+  setTimeout(() => {
+    startCountdown(60);
+  }, 10);
+
+  const endGame = () => {
+    navigateTo('/scores', mode);
+  };
+
   return `
   <div class="gameContainer">
     <header class="gameHeaderContainer">
       <span>سطح ${faMode()}</span>
       <div class="timerWrapper">
-      <span>00:59</span>
+      <span id="timerView">00:00</span>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
           <path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm.75-13a.75.75 0 0 0-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 0 0 0-1.5h-3.25V5Z" clip-rule="evenodd" />
         </svg>
