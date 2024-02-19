@@ -70,6 +70,7 @@ const Game = (mode) => {
     );
     const isCorrect = +e.target.name === correctAnswer;
     if (e.target.classList[0]?.includes('gameEachAnswerContainer')) {
+      activeOrDisableAllAnswers(false);
       if (isCorrect) {
         e.target.classList.add('correctAnswer');
         answerCount.correct += 1;
@@ -77,14 +78,27 @@ const Game = (mode) => {
         e.target.classList.add('wrongAnswer');
         answerCount.wrong += 1;
       }
-      // e.target.style = 'pointer-events: none';
       updateAnswerCount(answerCount);
       selectedQuestion = getRandomQuestion(info);
       setTimeout(() => {
         updateUI();
-        // Change Color Of Selected Answers - Active Clickable
-      }, 500);
+        e.target.classList.remove('wrongAnswer', 'correctAnswer');
+        activeOrDisableAllAnswers(true);
+      }, 750);
     }
+  };
+
+  const activeOrDisableAllAnswers = (setActive) => {
+    const allAnswer = document.querySelectorAll('.gameEachAnswerContainer');
+    allAnswer.forEach((element) => {
+      if (setActive) {
+        element.classList.add('clickActive');
+        element.classList.remove('clickDisable');
+      } else {
+        element.classList.add('clickDisable');
+        element.classList.remove('clickActive');
+      }
+    });
   };
 
   const updateUI = () => {

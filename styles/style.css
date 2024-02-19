@@ -33,3 +33,10 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.clickDisable {
+  pointer-events: none;
+}
+.clickActive {
+  pointer-events: auto;
+}
