@@ -66,13 +66,13 @@
   width: 100px;
 }
 .gameResultCorrectContainer {
-  color: #2a2;
-  background-color: #22ff2222;
+  color: var(--correctTxtColor);
+  background-color: var(--correctBgColor);
 }
 
 .gameResultWrongContainer {
-  background-color: #ff222222;
-  color: #a22;
+  color: var(--wrongTxtColor);
+  background-color: var(--wrongBgColor);
 }
 
 .gameQAContainer {
@@ -100,6 +100,7 @@
   display: flex;
   align-items: center;
   gap: 15px;
+  margin: 10px 0;
   padding: 10px 15px;
   border-radius: 10px;
   transition: 0.3s;
@@ -120,5 +121,21 @@
   p,
   span {
     pointer-events: none;
+  }
+}
+
+.wrongAnswer {
+  color: var(--wrongTxtColor);
+  background-color: var(--wrongBgColor);
+  span {
+    background-color: var(--wrongTxtColor);
+  }
+}
+
+.correctAnswer {
+  color: var(--correctTxtColor);
+  background-color: var(--correctBgColor);
+  span {
+    background-color: var(--correctTxtColor);
   }
 }

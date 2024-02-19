@@ -63,9 +63,16 @@ const Game = (mode) => {
     const correctAnswer = selectedQuestion.answers.findIndex(
       (answer) => answer.correctness === true
     );
-    console.log(correctAnswer, +e.target.name);
     const isCorrect = +e.target.name === correctAnswer;
-    console.log(isCorrect);
+    if (e.target.classList[0]?.includes('gameEachAnswerContainer')) {
+      if (isCorrect) {
+        e.target.classList.add('correctAnswer');
+        // increase correct counts - go to next question
+      } else {
+        e.target.classList.add('wrongAnswer');
+        // increase wrong counts - go to next question
+      }
+    }
   };
 
   return `

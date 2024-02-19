@@ -16,6 +16,10 @@
   --secondaryColor: #f4b909;
   --bgColor: #eee;
   --bgColorDarker: #e6e6e6;
+  --wrongBgColor: #ff222222;
+  --wrongTxtColor: #a22;
+  --correctBgColor: #22ff2222;
+  --correctTxtColor: #2a2;
 }
 
 html {
