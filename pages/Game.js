@@ -1,5 +1,12 @@
-const getRandomQuestion = (arr) => {
-  return arr[Math.floor(Math.random() * arr.length)];
+const shuffleArray = (arr) => {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+};
+const goToNextQuestion = (arr) => {
+  return arr[answerCount.correct + answerCount.wrong];
 };
 const info = [
   {
@@ -44,6 +51,48 @@ const info = [
       },
     ],
   },
+  {
+    question: 'سوال 3',
+    answers: [
+      {
+        answer: 'چون رنگ قرمز رو دوست داره',
+        correctness: false,
+      },
+      {
+        answer: 'بخاطر زاویه خورشید با زمین و تجزیه نور در اتمسفر زمین',
+        correctness: true,
+      },
+      {
+        answer: 'برای اینکه زیرا',
+        correctness: false,
+      },
+      {
+        answer: 'چون خورشید قرمز رنگه',
+        correctness: false,
+      },
+    ],
+  },
+  {
+    question: 'سوال 4',
+    answers: [
+      {
+        answer: 'چون رنگ قرمز رو دوست داره',
+        correctness: false,
+      },
+      {
+        answer: 'بخاطر زاویه خورشید با زمین و تجزیه نور در اتمسفر زمین',
+        correctness: true,
+      },
+      {
+        answer: 'برای اینکه زیرا',
+        correctness: false,
+      },
+      {
+        answer: 'چون خورشید قرمز رنگه',
+        correctness: false,
+      },
+    ],
+  },
 ];
 
 let answerCount = {
@@ -62,7 +111,8 @@ const Game = (mode) => {
         return 'سخت';
     }
   };
-  let selectedQuestion = getRandomQuestion(info);
+  let shuffledQuestions = shuffleArray(info);
+  let selectedQuestion = shuffledQuestions[0];
 
   const handleAnswerClick = (e) => {
     const correctAnswer = selectedQuestion.answers.findIndex(
@@ -79,7 +129,7 @@ const Game = (mode) => {
         answerCount.wrong += 1;
       }
       updateAnswerCount(answerCount);
-      selectedQuestion = getRandomQuestion(info);
+      selectedQuestion = goToNextQuestion(shuffledQuestions);
       setTimeout(() => {
         updateUI();
         e.target.classList.remove('wrongAnswer', 'correctAnswer');
