@@ -1,3 +1,5 @@
+import { navigateTo } from '../js/app.js';
+
 const info = [
   {
     question: 'چرا ماهی ها خونسرد هستند؟',
@@ -102,7 +104,6 @@ const Game = (mode) => {
     if (index < arr.length) return arr[index];
     else return -1;
   };
-  console.log(answerCount);
   const faMode = () => {
     switch (mode) {
       case 'easy':
@@ -138,7 +139,7 @@ const Game = (mode) => {
           updateUI();
           e.target.classList.remove('wrongAnswer', 'correctAnswer');
           activeOrDisableAllAnswers(true);
-        } else alert('Game is End');
+        } else navigateTo('/scores', mode);
       }, 750);
     }
   };
