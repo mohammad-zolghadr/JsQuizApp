@@ -1,13 +1,3 @@
-const shuffleArray = (arr) => {
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
-};
-const goToNextQuestion = (arr) => {
-  return arr[answerCount.correct + answerCount.wrong];
-};
 const info = [
   {
     question: 'چرا ماهی ها خونسرد هستند؟',
@@ -95,12 +85,24 @@ const info = [
   },
 ];
 
-let answerCount = {
-  correct: 0,
-  wrong: 0,
-};
-
 const Game = (mode) => {
+  let answerCount = {
+    correct: 0,
+    wrong: 0,
+  };
+  const shuffleArray = (arr) => {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  };
+  const goToNextQuestion = (arr) => {
+    const index = answerCount.correct + answerCount.wrong;
+    if (index < arr.length) return arr[index];
+    else return -1;
+  };
+  console.log(answerCount);
   const faMode = () => {
     switch (mode) {
       case 'easy':
@@ -130,10 +132,13 @@ const Game = (mode) => {
       }
       updateAnswerCount(answerCount);
       selectedQuestion = goToNextQuestion(shuffledQuestions);
+      console.log(selectedQuestion);
       setTimeout(() => {
-        updateUI();
-        e.target.classList.remove('wrongAnswer', 'correctAnswer');
-        activeOrDisableAllAnswers(true);
+        if (selectedQuestion !== -1) {
+          updateUI();
+          e.target.classList.remove('wrongAnswer', 'correctAnswer');
+          activeOrDisableAllAnswers(true);
+        } else alert('Game is End');
       }, 750);
     }
   };
