@@ -1,93 +1,8 @@
 import { navigateTo } from '../js/app.js';
-
-const info = [
-  {
-    question: 'چرا ماهی ها خونسرد هستند؟',
-    answers: [
-      {
-        answer: 'چون دلشون میخواد',
-        correctness: false,
-      },
-      {
-        answer: 'چون گرمایی هستن',
-        correctness: false,
-      },
-      {
-        answer: 'برای حرکت سریعتر در آب',
-        correctness: true,
-      },
-      {
-        answer: 'چون از تابستونا بدشون میاد',
-        correctness: false,
-      },
-    ],
-  },
-  {
-    question: 'چرا رنگ خورشید در هنگام غروب، به رنگ قرمز دیده می شود؟',
-    answers: [
-      {
-        answer: 'چون رنگ قرمز رو دوست داره',
-        correctness: false,
-      },
-      {
-        answer: 'بخاطر زاویه خورشید با زمین و تجزیه نور در اتمسفر زمین',
-        correctness: true,
-      },
-      {
-        answer: 'برای اینکه زیرا',
-        correctness: false,
-      },
-      {
-        answer: 'چون خورشید قرمز رنگه',
-        correctness: false,
-      },
-    ],
-  },
-  {
-    question: 'سوال 3',
-    answers: [
-      {
-        answer: 'چون رنگ قرمز رو دوست داره',
-        correctness: false,
-      },
-      {
-        answer: 'بخاطر زاویه خورشید با زمین و تجزیه نور در اتمسفر زمین',
-        correctness: true,
-      },
-      {
-        answer: 'برای اینکه زیرا',
-        correctness: false,
-      },
-      {
-        answer: 'چون خورشید قرمز رنگه',
-        correctness: false,
-      },
-    ],
-  },
-  {
-    question: 'سوال 4',
-    answers: [
-      {
-        answer: 'چون رنگ قرمز رو دوست داره',
-        correctness: false,
-      },
-      {
-        answer: 'بخاطر زاویه خورشید با زمین و تجزیه نور در اتمسفر زمین',
-        correctness: true,
-      },
-      {
-        answer: 'برای اینکه زیرا',
-        correctness: false,
-      },
-      {
-        answer: 'چون خورشید قرمز رنگه',
-        correctness: false,
-      },
-    ],
-  },
-];
+import { easyQuestions } from '../questions.js';
 
 const Game = (mode) => {
+  let info = easyQuestions;
   let answerCount = {
     correct: 0,
     wrong: 0,
@@ -133,7 +48,6 @@ const Game = (mode) => {
       }
       updateAnswerCount(answerCount);
       selectedQuestion = goToNextQuestion(shuffledQuestions);
-      console.log(selectedQuestion);
       setTimeout(() => {
         if (selectedQuestion !== -1) {
           updateUI();
@@ -176,7 +90,6 @@ const Game = (mode) => {
     let timer = durationInSeconds;
     let minutes, seconds;
     const displayElement = document.querySelector('#timerView');
-    console.log(displayElement);
 
     const intervalId = setInterval(() => {
       minutes = parseInt(timer / 60, 10);
@@ -186,7 +99,6 @@ const Game = (mode) => {
       seconds = seconds < 10 ? '0' + seconds : seconds;
 
       displayElement.textContent = minutes + ':' + seconds;
-      // console.log(minutes + ':' + seconds);
 
       if (--timer < 0) {
         clearInterval(intervalId);
