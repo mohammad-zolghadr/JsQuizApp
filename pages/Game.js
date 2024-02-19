@@ -1,8 +1,18 @@
 import { navigateTo } from '../js/app.js';
-import { easyQuestions } from '../questions.js';
+import { easyQuestions, hardQuestions, mediumQuestions } from '../questions.js';
 
 const Game = (mode) => {
-  let info = easyQuestions;
+  const getQuestionsBasedMode = () => {
+    switch (mode) {
+      case 'easy':
+        return easyQuestions;
+      case 'medium':
+        return mediumQuestions;
+      case 'hard':
+        return hardQuestions;
+    }
+  };
+  let info = getQuestionsBasedMode();
   let answerCount = {
     correct: 0,
     wrong: 0,
