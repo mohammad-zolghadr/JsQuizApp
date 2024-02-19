@@ -62,7 +62,7 @@ const Game = (mode) => {
         return 'سخت';
     }
   };
-  const selectedQuestion = getRandomQuestion(info);
+  let selectedQuestion = getRandomQuestion(info);
 
   const handleAnswerClick = (e) => {
     const correctAnswer = selectedQuestion.answers.findIndex(
@@ -77,9 +77,23 @@ const Game = (mode) => {
         e.target.classList.add('wrongAnswer');
         answerCount.wrong += 1;
       }
-      //go to next question
+      // e.target.style = 'pointer-events: none';
       updateAnswerCount(answerCount);
-      console.log(answerCount);
+      selectedQuestion = getRandomQuestion(info);
+      setTimeout(() => {
+        updateUI();
+        // Change Color Of Selected Answers - Active Clickable
+      }, 500);
+    }
+  };
+
+  const updateUI = () => {
+    document.querySelector('#questionContent').textContent =
+      selectedQuestion.question;
+    const allUIAnswer = document.querySelectorAll('.gameEachAnswerContainer');
+    for (let i = 0; i < allUIAnswer.length; i++) {
+      const answerParagraph = allUIAnswer[i].querySelector('p');
+      answerParagraph.textContent = selectedQuestion.answers[i].answer;
     }
   };
 
@@ -117,12 +131,13 @@ const Game = (mode) => {
       </div>
 
       <div class="gameQAContainer">
-        <p>${selectedQuestion.question}</p>
+        <p id="questionContent">${selectedQuestion.question}</p>
         <div class="gameAnswerContainer">
         ${selectedQuestion.answers
           .map(
             (answer, index) => `
             <button
+              id="answer${index}"
               class="gameEachAnswerContainer"
               name="${index}"
               onclick="${(onclick = (e) => {
