@@ -25,7 +25,7 @@ const router = (mode = 'easy') => {
 };
 
 const navigateTo = (url, mode = 'easy') => {
-  history.pushState(null, null, url);
+  history.pushState({ mode }, null, url);
   router(mode);
 };
 

@@ -10,6 +10,9 @@ const Game = (mode) => {
         return mediumQuestions;
       case 'hard':
         return hardQuestions;
+      default:
+        mode = mode?.state?.mode;
+        return getQuestionsBasedMode();
     }
   };
   let info = getQuestionsBasedMode();
