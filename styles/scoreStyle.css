@@ -23,25 +23,25 @@
   padding-top: 10px;
 }
 
-.bestScore {
-}
-
 .scoreBtnsContainer {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 20px;
-  svg {
-    width: 30px;
-    padding: 5px;
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.15);
-    background-color: var(--bgColorDarker);
-    transition: 0.3s;
+}
 
-    &:hover {
-      opacity: 0.5;
-    }
+.btnHomeContainer,
+.btnRepeatContainer {
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.15);
+  background-color: var(--bgColorDarker);
+  transition: 0.3s;
+
+  &:hover {
+    opacity: 0.5;
   }
 }
