@@ -1,9 +1,11 @@
+import { getBestScore } from '../js/app.js';
+
 const Scores = (mode, data) => {
   const currentScore = data.correct - data.wrong || 0;
   return `
     <div class="scoreContainer">
       <span class="currentScore">${currentScore}</span>
-      <p class="bestScore">بهترین امتیاز: ${'10'}</p>
+      <p class="bestScore">بهترین امتیاز: ${getBestScore()}</p>
       <div class="scoreBtnsContainer">
         <div>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">

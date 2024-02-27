@@ -1,4 +1,4 @@
-import { navigateTo } from '../js/app.js';
+import { navigateTo, getBestScore } from '../js/app.js';
 import { easyQuestions, hardQuestions, mediumQuestions } from '../questions.js';
 
 const Game = (mode) => {
@@ -138,12 +138,6 @@ const Game = (mode) => {
     const bestScore = getBestScore();
     if (bestScore === 0) updateBestScore(currentScore);
     else if (currentScore > bestScore) updateBestScore(currentScore);
-  };
-
-  const getBestScore = () => {
-    const bestScore =
-      JSON.parse(localStorage.getItem('BEST_SCORE'))['score'] || 0;
-    return bestScore;
   };
 
   const updateBestScore = (newScore) => {

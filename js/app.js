@@ -33,6 +33,11 @@ const navigateTo = (url, mode = 'easy', data = '') => {
   router(mode, data);
 };
 
+const getBestScore = () => {
+  const bestScore = JSON.parse(localStorage.getItem('BEST_SCORE'))?.score || 0;
+  return bestScore;
+};
+
 window.addEventListener('popstate', router);
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -45,4 +50,4 @@ document.addEventListener('DOMContentLoaded', () => {
   router();
 });
 
-export { navigateTo };
+export { navigateTo, getBestScore };
