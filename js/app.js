@@ -12,7 +12,6 @@ const routes = [
 ];
 
 const router = (mode = 'easy', data = '') => {
-  console.log(data);
   const pRoutes = routes.map((item) => {
     return {
       route: item,

@@ -133,7 +133,26 @@ const Game = (mode) => {
     }
   }, 10);
 
+  const checkBestScore = () => {
+    const currentScore = answerCount.correct - answerCount.wrong;
+    const bestScore = getBestScore();
+    if (bestScore === 0) updateBestScore(currentScore);
+    else if (currentScore > bestScore) updateBestScore(currentScore);
+  };
+
+  const getBestScore = () => {
+    const bestScore =
+      JSON.parse(localStorage.getItem('BEST_SCORE'))['score'] || 0;
+    return bestScore;
+  };
+
+  const updateBestScore = (newScore) => {
+    const data = { mode, score: newScore };
+    localStorage.setItem('BEST_SCORE', JSON.stringify(data));
+  };
+
   const endGame = () => {
+    checkBestScore();
     navigateTo('/scores', mode, answerCount);
   };
 
