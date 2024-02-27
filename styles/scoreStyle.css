@@ -1,2 +1,47 @@
 .scoreContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  padding: 35px 10px 25px;
+  width: 70vw;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.currentScore {
+  display: flex;
+  width: 150px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.15);
+  background-color: var(--bgColorDarker);
+  font-size: 1.5rem;
+  padding-top: 10px;
+}
+
+.bestScore {
+}
+
+.scoreBtnsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  svg {
+    width: 30px;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.15);
+    background-color: var(--bgColorDarker);
+    transition: 0.3s;
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
 }

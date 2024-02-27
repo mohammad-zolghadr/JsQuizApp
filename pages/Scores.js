@@ -2,7 +2,7 @@ const Scores = () => {
   return `
     <div class="scoreContainer">
       <span class="currentScore">16</span>
-      <p class="bestScore">بهترین امتیاز: ${'45'}</p>
+      <p class="bestScore">بهترین امتیاز: ${' 45'}</p>
       <div class="scoreBtnsContainer">
         <div>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
