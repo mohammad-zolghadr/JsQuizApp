@@ -134,7 +134,7 @@ const Game = (mode) => {
   }, 10);
 
   const endGame = () => {
-    navigateTo('/scores', mode);
+    navigateTo('/scores', mode, answerCount);
   };
 
   return `

@@ -11,22 +11,27 @@ const routes = [
   { path: '/notfound', view: NotFound },
 ];
 
-const router = (mode = 'easy') => {
+const router = (mode = 'easy', data = '') => {
+  console.log(data);
   const pRoutes = routes.map((item) => {
     return {
       route: item,
       mode,
+      data,
       isMatch: location.pathname === item.path,
     };
   });
   let match = pRoutes.find((route) => route.isMatch);
   if (!match) match = pRoutes[routes.length - 1];
-  document.querySelector('.main').innerHTML = match.route.view(match.mode);
+  document.querySelector('.main').innerHTML = match.route.view(
+    match.mode,
+    match.data
+  );
 };
 
-const navigateTo = (url, mode = 'easy') => {
-  history.pushState({ mode }, null, url);
-  router(mode);
+const navigateTo = (url, mode = 'easy', data = '') => {
+  history.pushState({ mode, data }, null, url);
+  router(mode, data);
 };
 
 window.addEventListener('popstate', router);
