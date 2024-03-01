@@ -49,3 +49,19 @@
     opacity: 0.5;
   }
 }
+
+@media (min-width: 768px) {
+  .scoreContainer {
+    width: 50vw;
+  }
+}
+@media (min-width: 992px) {
+  .scoreContainer {
+    width: 40vw;
+  }
+}
+@media (min-width: 1200px) {
+  .scoreContainer {
+    width: 30vw;
+  }
+}

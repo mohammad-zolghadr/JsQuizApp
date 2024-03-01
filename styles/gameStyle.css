@@ -140,3 +140,19 @@
     background-color: var(--correctTxtColor);
   }
 }
+
+@media (min-width: 768px) {
+  .gameContainer {
+    width: 70vw;
+  }
+}
+@media (min-width: 992px) {
+  .gameContainer {
+    width: 60vw;
+  }
+}
+@media (min-width: 1200px) {
+  .gameContainer {
+    width: 50vw;
+  }
+}
